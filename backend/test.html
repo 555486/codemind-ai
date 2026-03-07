@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CodeMind AI Backend 测试</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      max-width: 800px;
+      margin: 50px auto;
+      padding: 20px;
+      background: #0f172a;
+      color: #f1f5f9;
+    }
+    h1 {
+      color: #00d4ff;
+      text-align: center;
+    }
+    .test-section {
+      background: rgba(30, 41, 59, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+      padding: 20px;
+      margin: 20px 0;
+    }
+    button {
+      background: linear-gradient(90deg, #00d4ff, #00ff88);
+      color: #0f172a;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+      margin: 5px;
+    }
+    button:hover {
+      opacity: 0.9;
+      transform: translateY(-1px);
+    }
+    .result {
+      background: rgba(15, 23, 42, 0.8);
+      border-radius: 6px;
+      padding: 15px;
+      margin-top: 10px;
+      white-space: pre-wrap;
+      font-family: 'Courier New', monospace;
+      font-size: 12px;
+      max-height: 300px;
+      overflow-y: auto;
+    }
+    .status {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: bold;
+      margin-left: 10px;
+    }
+    .status.ok {
+      background: rgba(0, 255, 136, 0.2);
+      color: #00ff88;
+      border: 1px solid #00ff88;
+    }
+    .status.error {
+      background: rgba(255, 71, 87, 0.2);
+      color: #ff4757;
+      border: 1px solid #ff4757;
+    }
+  </style>
+</head>
+<body>
+  <h1> CodeMind AI Backend 测试</h1>
+  
+  <div class="test-section">
+    <h2>服务器状态 <span id="health-status" class="status"></span></h2>
+    <button onclick="testHealth()">测试健康检查</button>
+    <div id="health-result" class="result"></div>
+  </div>
+
+  <div class="test-section">
+    <h2>API 信息</h2>
+    <button onclick="testAPI()">获取 API 信息</button>
+    <div id="api-result" class="result"></div>
+  </div>
+
+  <div class="test-section">
+    <h2>代码分析测试</h2>
+    <button onclick="testAnalyze()">测试代码分析</button>
+    <div id="analyze-result" class="result"></div>
+  </div>
+
+  <div class="test-section">
+    <h2>代码解释测试</h2>
+    <button onclick="testExplain()">测试代码解释</button>
+    <div id="explain-result" class="result"></div>
+  </div>
+
+  <div class="test-section">
+    <h2>AI 教学测试</h2>
+    <button onclick="testTeach()">测试 AI 教学</button>
+    <div id="teach-result" class="result"></div>
+  </div>
+
+  <script>
+    const API_BASE = 'http://localhost:3001';
+
+    async function testHealth() {
+      try {
+        const response = await fetch(`${API_BASE}/health`);
+        const data = await response.json();
+        document.getElementById('health-result').textContent = JSON.stringify(data, null, 2);
+        document.getElementById('health-status').className = 'status ok';
+        document.getElementById('health-status').textContent = '运行中';
+      } catch (error) {
+        document.getElementById('health-result').textContent = `错误：${error.message}`;
+        document.getElementById('health-status').className = 'status error';
+        document.getElementById('health-status').textContent = '错误';
+      }
+    }
+
+    async function testAPI() {
+      try {
+        const response = await fetch(`${API_BASE}/api`);
+        const data = await response.json();
+        document.getElementById('api-result').textContent = JSON.stringify(data, null, 2);
+      } catch (error) {
+        document.getElementById('api-result').textContent = `错误：${error.message}`;
+      }
+    }
+
+    async function testAnalyze() {
+      try {
+        const response = await fetch(`${API_BASE}/api/analyze`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            code: 'console.log("Hello World");',
+            language: 'javascript'
+          })
+        });
+        const data = await response.json();
+        document.getElementById('analyze-result').textContent = JSON.stringify(data, null, 2);
+      } catch (error) {
+        document.getElementById('analyze-result').textContent = `错误：${error.message}`;
+      }
+    }
+
+    async function testExplain() {
+      try {
+        const response = await fetch(`${API_BASE}/api/explain`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            code: 'function add(a, b) { return a + b; }',
+            language: 'javascript'
+          })
+        });
+        const data = await response.json();
+        document.getElementById('explain-result').textContent = JSON.stringify(data, null, 2);
+      } catch (error) {
+        document.getElementById('explain-result').textContent = `错误：${error.message}`;
+      }
+    }
+
+    async function testTeach() {
+      try {
+        const response = await fetch(`${API_BASE}/api/teach`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            topic: '闭包',
+            language: 'javascript'
+          })
+        });
+        const data = await response.json();
+        document.getElementById('teach-result').textContent = JSON.stringify(data, null, 2);
+      } catch (error) {
+        document.getElementById('teach-result').textContent = `错误：${error.message}`;
+      }
+    }
+
+    // 自动测试健康检查
+    window.onload = () => {
+      testHealth();
+    };
+  </script>
+</body>
+</html>

@@ -1,0 +1,6 @@
+// 导出所有组件样式
+import './global.css';
+import './themes/dark-tech.css';
+import './animations.css';
+
+// 组件样式会通过各组件自动引入

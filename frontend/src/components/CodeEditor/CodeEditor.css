@@ -1,0 +1,135 @@
+.code-editor-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: #0F172A;
+  min-height: 0; /* 关键：允许编辑器容器收缩 */
+}
+
+.editor-header {
+  padding: 12px 20px;
+  background: rgba(15, 23, 42, 0.9);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-shrink: 0; /* 防止header被压缩 */
+}
+
+.language-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.language-icon {
+  font-size: 18px;
+}
+
+.language-name {
+  background: linear-gradient(90deg, #00D4FF, #00FF88);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-weight: bold;
+  font-size: 14px;
+  padding: 4px 12px;
+  border-radius: 20px;
+  border: 1px solid rgba(0, 212, 255, 0.3);
+}
+
+.code-stats {
+  color: #94A3B8;
+  font-size: 12px;
+  padding: 4px 8px;
+  background: rgba(30, 41, 59, 0.5);
+  border-radius: 4px;
+}
+
+.editor-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.action-btn {
+  background: rgba(30, 41, 59, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #F1F5F9;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s;
+}
+
+.action-btn:hover {
+  background: rgba(30, 41, 59, 1);
+  border-color: #00D4FF;
+  transform: translateY(-1px);
+}
+
+.editor-wrapper {
+  flex: 1;
+  overflow: hidden;
+  min-height: 0;
+}
+
+/* Monaco Editor容器 - 关键调整 */
+.monaco-editor {
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+}
+
+/* 确保编辑器内容区域可以扩展 */
+.monaco-editor .overflow-guard {
+  height: 100% !important;
+}
+
+/* 调整编辑器内部 */
+.monaco-editor .monaco-editor-background {
+  background-color: #0F172A !important;
+}
+
+.editor-wrapper .monaco-editor {
+  padding: 8px 0;
+}
+
+/* 自定义 Monaco Editor 滚动条 */
+.editor-wrapper ::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+.editor-wrapper ::-webkit-scrollbar-track {
+  background: rgba(15, 23, 42, 0.5);
+}
+
+.editor-wrapper ::-webkit-scrollbar-thumb {
+  background: rgba(0, 212, 255, 0.3);
+  border-radius: 5px;
+}
+
+.editor-wrapper ::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 212, 255, 0.5);
+}
+
+/* 错误高亮 - 红色 */
+.error-line {
+  background: rgba(255, 71, 87, 0.25) !important;
+  border-left: 3px solid rgba(255, 71, 87, 0.6);
+}
+
+.warning-line {
+  background: rgba(255, 165, 2, 0.2) !important;
+  border-left: 3px solid rgba(255, 165, 2, 0.5);
+}
+
+/* 代码建议装饰器 */
+.suggestion-decoration {
+  background: rgba(0, 255, 136, 0.1);
+  border-left: 3px solid #00FF88;
+}

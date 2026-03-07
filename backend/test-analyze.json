@@ -1,0 +1,4 @@
+{
+  "code": "function test() { console.log('Hello'); }",
+  "language": "javascript"
+}

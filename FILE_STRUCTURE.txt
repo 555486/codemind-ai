@@ -1,0 +1,108 @@
+CodeMind AI Assistant - 项目文件结构
+=====================================
+
+code-mind-ai/
+│
+├── frontend/                              前端项目 (React + TypeScript + Vite)
+│   ├── src/
+│   │   ├── components/                   React 组件
+│   │   │   ├── Header/
+│   │   │   │   ├── Header.tsx           头部组件
+│   │   │   │   └── Header.css           头部样式
+│   │   │   ├── ControlPanel/
+│   │   │   │   ├── ControlPanel.tsx     控制面板组件
+│   │   │   │   └── ControlPanel.css     控制面板样式
+│   │   │   ├── CodeEditor/
+│   │   │   │   ├── CodeEditor.tsx       代码编辑器组件 (Monaco)
+│   │   │   │   └── CodeEditor.css       编辑器样式
+│   │   │   ├── CodeSuggestions/
+│   │   │   │   ├── CodeSuggestions.tsx  AI 建议组件
+│   │   │   │   └── CodeSuggestions.css  建议样式
+│   │   │   ├── ErrorPanel/
+│   │   │   │   ├── ErrorPanel.tsx       错误面板组件
+│   │   │   │   └── ErrorPanel.css       错误面板样式
+│   │   │   ├── ExplanationPanel/
+│   │   │   │   ├── ExplanationPanel.tsx 解释面板组件
+│   │   │   │   └── ExplanationPanel.css 解释面板样式
+│   │   │   ├── TeachingPanel/
+│   │   │   │   ├── TeachingPanel.tsx    教学面板组件
+│   │   │   │   └── TeachingPanel.css    教学面板样式
+│   │   │   └── ErrorHighlighter/        错误高亮组件 (预留)
+│   │   │
+│   │   ├── pages/                        页面组件
+│   │   │   └── MainPage/
+│   │   │       ├── MainPage.tsx         主页面
+│   │   │       └── MainPage.css         主页面样式
+│   │   │
+│   │   ├── services/                     API 服务
+│   │   │   └── api.ts                   API 调用封装
+│   │   │
+│   │   ├── styles/                       样式文件
+│   │   │   ├── global.css               全局样式
+│   │   │   ├── themes/
+│   │   │   │   └── dark-tech.css        科技风主题
+│   │   │   ├── components/
+│   │   │   │   └── index.css            组件通用样式
+│   │   │   ├── animations.css           动画效果
+│   │   │   └── index.css                样式索引
+│   │   │
+│   │   ├── utils/                        工具函数
+│   │   │   └── language.ts              语言工具
+│   │   │
+│   │   ├── App.tsx                       应用根组件
+│   │   ├── App.css                       应用样式
+│   │   ├── main.tsx                      应用入口
+│   │   └── vite-env.d.ts                 TypeScript 声明
+│   │
+│   ├── public/                           静态资源
+│   ├── index.html                        HTML 模板
+│   ├── package.json                      前端依赖配置
+│   ├── tsconfig.json                     TypeScript 配置
+│   ├── tsconfig.node.json                Node TypeScript 配置
+│   └── vite.config.ts                    Vite 配置
+│
+├── backend/                              后端项目 (Node.js + Express + TypeScript)
+│   ├── src/
+│   │   ├── controllers/                  控制器
+│   │   │   ├── analyzeController.ts     代码分析控制器
+│   │   │   ├── explainController.ts     代码解释控制器
+│   │   │   └── teachController.ts       教学控制器
+│   │   │
+│   │   ├── routes/                       路由
+│   │   │   ├── analyze.ts               分析路由
+│   │   │   ├── explain.ts               解释路由
+│   │   │   └── teach.ts                 教学路由
+│   │   │
+│   │   ├── services/                     业务逻辑
+│   │   │   ├── analyzeService.ts        分析服务
+│   │   │   ├── explainService.ts        解释服务
+│   │   │   └── teachService.ts          教学服务
+│   │   │
+│   │   ├── utils/                        工具函数
+│   │   │   ├── helpers.ts               通用工具
+│   │   │   └── logger.ts                日志工具
+│   │   │
+│   │   └── app.ts                        应用入口
+│   │
+│   ├── .env.example                      环境变量示例
+│   ├── package.json                      后端依赖配置
+│   └── tsconfig.json                     TypeScript 配置
+│
+├── docs/                                 文档目录
+│   ├── API.md                            API 接口文档
+│   └── DEVELOPMENT.md                    开发指南
+│
+├── .gitignore                            Git 忽略配置
+├── LICENSE                               MIT 开源许可证
+├── README.md                             项目说明文档
+├── QUICKSTART.md                         快速开始指南
+└── PROJECT_SUMMARY.md                    项目总结
+
+=====================================
+统计信息:
+- 前端组件：8 个主要组件
+- 样式文件：15+ CSS 文件
+- API 端点：4 个
+- 支持语言：10+ 种
+- 文档文件：5 个
+- 总代码行数：约 3000+ 行

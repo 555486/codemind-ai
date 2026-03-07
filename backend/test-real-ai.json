@@ -1,0 +1,4 @@
+{
+  "code": "function calculateSum(a, b) {\n  let result = a + b;\n  console.log('结果是：' + result);\n  return result;\n}\n\ncalculateSum(10, 20);",
+  "language": "javascript"
+}
