@@ -1,4 +1,4 @@
-import { CodeSuggestion } from '../../pages/MainPage/MainPage';
+import { CodeSuggestion } from '../../pages/MainPage';
 import './CodeSuggestions.css';
 
 interface CodeSuggestionsProps {

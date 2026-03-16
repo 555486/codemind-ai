@@ -81,11 +81,10 @@ function CodeEditor({ code, language, onChange }: CodeEditorProps) {
       quickSuggestions: false,
       hover: { enabled: false },
       links: false,
-      linkEditing: false,
-      linkDetection: false,
+      linkedEditing: false,
       folding: false,
       glyphMargin: false,
-      occurrencesHighlight: false,
+      occurrencesHighlight: 'off' as const,
       selectionHighlight: false,
       find: {
         addExtraSpaceOnTop: false,
@@ -94,7 +93,6 @@ function CodeEditor({ code, language, onChange }: CodeEditorProps) {
       },
       contextmenu: false,
       rulers: [],
-      ignoreTrimWhitespace: false,
     });
 
     // 禁用所有代码诊断和跳转

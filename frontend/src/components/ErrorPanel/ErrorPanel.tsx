@@ -1,9 +1,11 @@
 import './ErrorPanel.css';
 
-interface ErrorItem {
-  type: 'error' | 'warning' | 'info';
-  line: number;
-  message: string;
+export interface ErrorItem {
+  type: 'error' | 'warning' | 'info' | 'suggestion';
+  line?: number;
+  message?: string;
+  title?: string;
+  description?: string;
 }
 
 interface ErrorPanelProps {
@@ -33,7 +35,7 @@ const ErrorPanel: React.FC<ErrorPanelProps> = ({ results }) => {
           <div key={index} className={`error-item ${result.type}`}>
             <div className="error-type">{result.type.toUpperCase()}</div>
             <div className="error-line">第 {result.line} 行</div>
-            <div className="error-message">{result.message}</div>
+            <div className="error-message">{result.message || result.description || result.title}</div>
           </div>
         ))}
       </div>
